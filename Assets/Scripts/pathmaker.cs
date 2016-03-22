@@ -14,7 +14,7 @@ public class pathmaker : MonoBehaviour {
     public int counterNumber = 50;
     public float rePathMakerStart = .98f;
     public float rePathMakerEnd = .99f;
-    public float createMonsterStart = .90f;
+    public float createMonsterStart = .93f;
     public float createMonsterEnd = .95f;
 
 
@@ -41,23 +41,24 @@ public class pathmaker : MonoBehaviour {
             {
                 float monsterRandNum = Random.Range(0f, 1f);
              
-                if (monsterRandNum > .33f)
+                if (monsterRandNum < .33f)
                 {
-                    Instantiate(monster1, transform.position, Quaternion.identity);
+                    Instantiate(monster1, transform.position + Vector3.up * 1, Quaternion.identity);
                 }
                 else if (monsterRandNum < .66f && monsterRandNum > .33f)
                 {
-                    Instantiate(monster2, transform.position, Quaternion.identity);
+                    Instantiate(monster2, transform.position + Vector3.up * 0, Quaternion.identity);
                 }
                 else if (monsterRandNum < 1f && monsterRandNum > .66f)
                 {
-                    Instantiate(monster3, transform.position, Quaternion.identity);
+                    Instantiate(monster3, transform.position + Vector3.up * 0, Quaternion.identity);
                 }
             }
 
             else if (randNum > rePathMakerStart && randNum < rePathMakerEnd)
             {
                 Instantiate(pathmakerPrefab, transform.position, Quaternion.identity);
+                counter += 10;
             }
             else if (randNum > .99f)
             {
